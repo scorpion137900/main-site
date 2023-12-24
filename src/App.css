@@ -1,3 +1,78 @@
+body {
+  background-color: #e4f3f3;
+  padding: 20px;
+  position: relative;
+  background-image: 
+    /* url(https://www.nosghy.com/wp-content/uploads/2022/08/background-1.png) !important; */
+    /* url(https://images.unsplash.com/photo-1620503374956-c942862f0372?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) !important; */
+    url(https://images.unsplash.com/photo-1620503374956-c942862f0372?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) !important;
+  /* url(./assets/images/header.png) !important; */
+
+  background: no-repeat center center/cover fixed;
+  -webkit-animation: slidein 10s;
+  animation: slidein 10s;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+}
+@-webkit-keyframes slidein {
+  from {
+    background-position: top;
+    background-size: 1000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+}
+
+@keyframes slidein {
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
+}
+/* .text-gradient {
+  background: linear-gradient(-107.83deg, #292632 34.89%, #03aeaf 62.87%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+} */
+.text-gradient {
+  --bg-size: 400%;
+  --color-one: #292632;
+  --color-two: #03aeaf;
+  --color-three: #0097a3;
+  --color-four: #2a2a2a;
+  font-size: clamp(3rem, 25vmin, 8rem);
+  background: linear-gradient(
+      90deg,
+      var(--color-two),
+      var(--color-one),
+      var(--color-three),
+      var(--color-four)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 10s infinite linear;
+}
+@keyframes move-bg {
+  to {
+    background-position: var(--bg-size) 0;
+  }
+}
 .appBar {
   transition: background 0.5s ease-in-out;
   min-height: 80px;
@@ -5,6 +80,12 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+}
+.appBar.scrolled {
+  backdrop-filter: blur(10px);
+  background: transparent;
+  top: 0;
+  transition: 0.5s ease-in-out;
 }
 .splide__pagination {
   counter-reset: pagination-num;
@@ -47,7 +128,7 @@
 #scrollTop {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 25px;
   background-color: var(--light-color);
   color: var(--text-secondary);
   z-index: 10;
@@ -67,6 +148,17 @@
 @keyframes jump {
   0% {
     transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.translation {
+  animation: move 5s ease-in-out infinite alternate-reverse;
+}
+@keyframes move {
+  0% {
+    transform: translateY(100px);
   }
   100% {
     transform: translateY(0);

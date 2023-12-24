@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "text.secondary",
+        backgroundColor: "opacity-bg.main",
         mt: "250px",
         pt: "100px",
         pb: "20px",
@@ -43,7 +43,8 @@ const Footer = () => {
             transform: "translateX(-50%)",
             width: "calc(100% - 30px)",
             backgroundImage:
-              " linear-gradient( 109.6deg, rgba(45,116,213,1) 11.2%, rgba(121,137,212,1) 91.2% )",
+              // " linear-gradient( 109.6deg, rgba(45,116,213,1) 11.2%, rgba(121,137,212,1) 91.2% )",
+              "linear-gradient( 109.6deg, #03aeaf 11.2%, #0097a3 91.2% )",
           }}
         >
           <Container maxWidth="xl" sx={{ textAlign: "center" }}>
@@ -86,10 +87,10 @@ const Footer = () => {
               ))}
             </div>
           </Grid>
-          <Grid item xs={12} md={6} lg={4} sx={{ textAlign: "center" }}>
-            <Typography color="light.main">
+          <Grid item xs={12} md={6} lg={4} sx={{ textAlign: "center", }}>
+            <Typography color="text.main" fontWeight={"bold"}>
               {" "}
-              Specialist &copy; 2023 All Rights Reserved
+              Specialist &copy; 2024 All Rights Reserved
             </Typography>
           </Grid>
           <Grid

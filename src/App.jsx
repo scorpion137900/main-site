@@ -50,6 +50,14 @@ function App() {
           }
         />
         <Route
+          path="/specialists/:id"
+          element={
+            <Layout>
+              <Specialists />
+            </Layout>
+          }
+        />
+        <Route
           path="/pricing"
           element={
             <Layout>

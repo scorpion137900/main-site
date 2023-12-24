@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,18 +12,20 @@ import { useEffect, useState } from "react";
 
 import { useDirectionThemeContext } from "../../Context/Direction";
 import AvatarProfile from "./AvatarProfile";
-import { NavLink, useNavigate } from "react-router-dom";
-import { CardMedia } from "@mui/material";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { CardMedia, useMediaQuery } from "@mui/material";
 import logo from "../../assets/images/logo.png";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import theme from "../../Styles/Styles";
+import { MenuOpen, Widgets } from "@mui/icons-material";
 const Navbar = () => {
   const { t } = useTranslation();
   const Links = t("Links", { returnObjects: true });
   const { isRtl, toggleLanguage } = useDirectionThemeContext();
 
   const user = useSelector((state) => state.auth.user);
-  console.log(user, "user");
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
@@ -51,29 +53,50 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       className={` appBar ${isScrolled ? "scrolled" : ""}`}
-      color={`${isScrolled ? "light" : "transparent"}`}
+      // color={`${isScrolled ? "light" : "transparent"}`}
+      color="transparent"
+      sx={{
+        boxShadow: '0 0 2px rgba(0,0,0,0.1)',
+        top: "20px",
+        backgroundImage: `radial-gradient(circle at top left,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.3) 100%)!important;`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+      <Container maxWidth="xl" sx={{
+        overflowX: "hidden",
+      }}>
+        <Toolbar disableGutters sx={{ justifyContent: "space-between", overflowX: "hidden" }}>
           {/* Image */}
-          <CardMedia
-            component="img"
-            image={logo}
-            alt="logo"
-            sx={{ width: 80, display: { xs: "none", md: "flex" } }}
-          />
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Link to={"/"} style={{ display: matches ? "none" : "flex" }}>
+            <CardMedia
+              component="img"
+              image={logo}
+              alt="logo"
+              sx={{ width: 55, display: { xs: "none", md: "flex" } }}
+            />
+          </Link>
+          <Box sx={{ display: { xs: "flex", md: "none" }, overflowX: "hidden" }}>
             <IconButton
-              size="large"
+
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{
+                // backgroundColor: "main",
+                color: "text.main",
+                fontSize: "40px"
+                // borderRadius: "5px",
+                // position: "relative",
+              }}
             >
-              <MenuIcon />
+              {anchorElNav ? <MenuOpen fontSize="large" /> : <Widgets fontSize="large" />}
+
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -87,10 +110,16 @@ const Navbar = () => {
                 vertical: "top",
                 horizontal: "left",
               }}
+
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
+                overflowX: "hidden",
                 display: { xs: "block", md: "none" },
+                width: "100%",
+                "& *": {
+                  width: "100%",
+                },
               }}
             >
               {/* Mobile  */}
@@ -112,7 +141,8 @@ const Navbar = () => {
             component="img"
             image={logo}
             alt="logo"
-            sx={{ width: 80, display: { xs: "flex", md: "none" } }}
+            sx={{ width: 50, display: { xs: "flex", md: "none" } }}
+
           />
 
           {/* LAPTOP */}
@@ -133,7 +163,7 @@ const Navbar = () => {
             })}
           </Box>
           <Box gap="10px" display="flex">
-            <Button variant="outlined" onClick={toggleLanguage}>
+            <Button variant="contained" onClick={toggleLanguage} color="primary" >
               {isRtl ? "EN" : "AR"}
             </Button>
             {user ? (
@@ -146,7 +176,7 @@ const Navbar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 

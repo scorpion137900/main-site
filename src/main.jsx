@@ -9,13 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { store } from "./store/store";
 import ScrollTop from "./components/ScrollTop";
 import "./i18n";
+import { ParallaxProvider } from "react-scroll-parallax";
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
       <ToastContainer />
       <ScrollTop />
-      <App />
+      <ParallaxProvider>
+
+        <App />
+      </ParallaxProvider>
     </Provider>
   </BrowserRouter>
   // </React.StrictMode>

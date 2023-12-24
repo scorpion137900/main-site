@@ -2,8 +2,12 @@ import { CardMedia, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import theme from "../../../Styles/Styles";
+import { useParallax } from "react-scroll-parallax";
 
 const Point = ({ Icon, img, text, reverse }) => {
+  const parallax = useParallax({
+    scale: [.5, 1],
+  });
   return (
     <Grid
       container
@@ -47,6 +51,7 @@ const Point = ({ Icon, img, text, reverse }) => {
         >
           <CardMedia
             component="img"
+            ref={parallax.ref}
             image={img}
             height="100%"
             sx={{

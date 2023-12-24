@@ -2,11 +2,11 @@ import { VpnKeyOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Button, FormGroup, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerReset, reset } from "../../store/features/auth/authSlice";
+import { reset } from "../../store/features/auth/authSlice";
 import { login } from "../../store/features/auth/thunks/authThunks";
 const Login = () => {
   const navigate = useNavigate();
@@ -71,8 +71,8 @@ const Login = () => {
             {...register("password", {
               required: "You must specify a password",
               minLength: {
-                value: 8,
-                message: "Password must have at least 8 characters",
+                value: 6,
+                message: "Password must have at least 6 characters",
               },
             })}
             error={errors.password}

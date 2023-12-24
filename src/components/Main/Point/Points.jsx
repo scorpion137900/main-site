@@ -8,9 +8,24 @@ import program from "../../../assets/images/Points/plan.png";
 import measure from "../../../assets/images/Points/measure.png";
 import feel from "../../../assets/images/Points/feel.png";
 import Point from "./Point";
+import TopSection from "../../TopSection";
 const Points = () => {
   return (
-    <Box py={"150px"}>
+    <Box py={"150px"} sx={{ position: "relative", overflowX: "hidden" }}>
+      <Box as="img" src="https://ynmodata.com/wp-content/themes/ynmolanding/assets/images/yn-bg-dark.svg" sx={{
+        position: "absolute",
+        maxWidth: "100%",
+        right: 0,
+        filter: "invert(1)",
+        top: "50%",
+        transform: "translateY(-50%)",
+        // width: "100%",
+        // height: "100%",
+        zIndex: -1
+      }} />
+
+
+      <TopSection />
       <Container maxWidth="xl">
         <Point
           Icon={ShieldTwoTone}
