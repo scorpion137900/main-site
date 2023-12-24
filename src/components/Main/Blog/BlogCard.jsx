@@ -55,7 +55,7 @@ const BlogCard = () => {
       ) : (
         currentPosts.map((item, index) => (
           <Grid item sm={6} xs={12} md={4} lg={3} key={index}>
-            {item}
+
             <Card
               sx={{
                 width: "100%",

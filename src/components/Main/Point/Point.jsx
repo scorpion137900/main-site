@@ -6,7 +6,13 @@ import { useParallax } from "react-scroll-parallax";
 
 const Point = ({ Icon, img, text, reverse }) => {
   const parallax = useParallax({
-    scale: [.5, 1],
+    scale: [.5, 1.2],
+    easing: 'easeOutQuad',
+  });
+  const parallax1 = useParallax({
+    opacity: [0.5, 1],
+
+    easing: 'easeOutQuad',
   });
   return (
     <Grid
@@ -15,15 +21,17 @@ const Point = ({ Icon, img, text, reverse }) => {
         alignItems: "center",
         flexDirection: reverse ? "row-reverse" : "row",
         my: "50px",
+        mb: "100px",
       }}
     >
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} >
         <Box
           sx={{
             maxWidth: "350px",
             maxHeight: "350px",
             textAlign: "center",
             position: "relative",
+
             marginInlineStart: reverse ? "auto" : "",
             [theme.breakpoints.down("md")]: {
               marginInline: "auto",
@@ -37,7 +45,7 @@ const Point = ({ Icon, img, text, reverse }) => {
               width: "100%",
               height: "85%",
               borderRadius: "50px",
-              backgroundColor: "var(--bg-color)",
+              backgroundColor: "opacity-bg.main",
               opacity: "1",
             },
             "&:after": {
@@ -63,8 +71,8 @@ const Point = ({ Icon, img, text, reverse }) => {
           />
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <Box display="flex" gap="15px">
+      <Grid item xs={12} md={6} ref={parallax1?.ref}>
+        <Box display="flex" gap="15px" >
           <Box
             sx={{
               width: "60px",
@@ -72,13 +80,13 @@ const Point = ({ Icon, img, text, reverse }) => {
               display: "flex",
               mb: "30px",
               alignItems: "center",
-              backgroundColor: "var(--bg-color)",
+              backgroundColor: "opacity-bg.main",
               justifyContent: "center",
               borderRadius: "10px",
               "& svg": {
                 fontSize: "2rem",
-                color: "var(--main-color) !important",
-                fill: "var(--main-color) !important",
+                color: "main",
+                fill: "opacity-bg.main",
               },
             }}
           >
@@ -91,6 +99,7 @@ const Point = ({ Icon, img, text, reverse }) => {
               sx={{
                 fontWeight: "700",
               }}
+              className="text-gradient"
             >
               {text?.[0]}
             </Typography>
@@ -99,13 +108,14 @@ const Point = ({ Icon, img, text, reverse }) => {
               component={"p"}
               sx={{
                 fontWeight: "600",
+                fontSize: "17px",
               }}
             >
               {text?.[1]}
             </Typography>
           </Box>
         </Box>
-        <Typography variant="body1" component={"p"}>
+        <Typography variant="body1" component={"p"} fontWeight={"600"}>
           {text?.[2]}
         </Typography>
       </Grid>
