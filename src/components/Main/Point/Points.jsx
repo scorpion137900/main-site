@@ -9,6 +9,7 @@ import measure from "../../../assets/images/Points/measure.png";
 import feel from "../../../assets/images/Points/feel.png";
 import Point from "./Point";
 import TopSection from "../../TopSection";
+import BottomSection from "../../BottomSection";
 const Points = () => {
   return (
     <Box py={"150px"} sx={{ position: "relative", overflowX: "hidden" }}>
@@ -45,6 +46,7 @@ const Points = () => {
           ]}
         />
       </Container>
+      <BottomSection />
     </Box>
   );
 };

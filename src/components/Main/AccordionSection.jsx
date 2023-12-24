@@ -4,7 +4,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import TopSection from "../TopSection";
 const details = [
   {
     title: " كيف أجد المختص المناسب؟",
@@ -30,31 +31,34 @@ const AccordionSection = () => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ my: "40px" }}>
-      {details.map((item, index) => (
-        <Accordion
-          sx={{ backgroundColor: "bg" }}
-          key={index}
-          expanded={expanded === `panel${index}`}
-          onChange={handleChange(`panel${index}`)}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls={`panel${index}bh-content`}
-            id={`panel${index}bh-header`}
+    <Box sx={{ position: "relative", pt: "150px" }}>
+      <TopSection />
+      <Container maxWidth="xl" >
+        {details.map((item, index) => (
+          <Accordion
+            sx={{ backgroundColor: "bg" }}
+            key={index}
+            expanded={expanded === `panel${index}`}
+            onChange={handleChange(`panel${index}`)}
           >
-            <Typography sx={{ color: "main", fontWeight: "600" }}>
-              {item.title}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography color={"text.secondary"} fontWeight="600">
-              {item.content}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
-    </Container>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel${index}bh-content`}
+              id={`panel${index}bh-header`}
+            >
+              <Typography sx={{ color: "main", fontWeight: "600" }}>
+                {item.title}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography color={"text.secondary"} fontWeight="600">
+                {item.content}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Container>
+    </Box>
   );
 };
 

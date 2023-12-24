@@ -80,14 +80,14 @@ const BlogCard = () => {
                     {Blogs[0].date}
                   </Typography>
                   <Typography
-                    color={"text.secondary"}
+                    // color={"text.secondary"}
                     variant="h6"
                     component="h6"
                     fontWeight={"700"}
                     my="20px"
                     fontSize=".9rem"
                   >
-                    {Blogs[0].title} {index}
+                    {Blogs[0].title}
                   </Typography>
                   <Typography variant="body1" component="p" fontSize=".9rem">
                     {Blogs[0].text.slice(0, 100)}
