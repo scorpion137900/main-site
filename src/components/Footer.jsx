@@ -20,14 +20,15 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "opacity-bg.main",
+        // backgroundColor: "opacity-bg.main",
         mt: "250px",
         pt: "100px",
         pb: "20px",
         borderTopRightRadius: "80px",
         borderTopLeftRadius: "80px",
         position: "relative",
-
+        backdropFilter: " blur(10px)",
+        background: "transparent",
         // background:
         //   " linear-gradient( 109.6deg, rgba(45,116,213,1) 11.2%, rgba(121,137,212,1) 91.2% )",
       }}
@@ -35,10 +36,10 @@ const Footer = () => {
       <Container maxWidth="xl" sx={{ position: "relative" }}>
         <Box
           sx={{
-            borderRadius: "50px",
-            py: "50px",
+            borderRadius: "20px",
+            py: "30px",
             position: "absolute",
-            top: "-200px",
+            top: "-160px",
             left: "50%",
             transform: "translateX(-50%)",
             width: "calc(100% - 30px)",
@@ -52,7 +53,7 @@ const Footer = () => {
               component="h4"
               variant="h4"
               color="light.main"
-              fontSize={"2.5rem"}
+              fontSize={"2rem"}
               fontWeight="bold"
             >
               البدء بالتشخيص

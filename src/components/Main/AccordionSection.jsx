@@ -34,9 +34,22 @@ const AccordionSection = () => {
     <Box sx={{ position: "relative", pt: "150px" }}>
       <TopSection />
       <Container maxWidth="xl" >
+        <Typography
+          component={"h5"}
+          variant={"h5"}
+          sx={{
+            fontWeight: "700",
+            mb: "30px",
+          }}
+          className="text-gradient"
+        >
+
+          أسئلة حول المعالجين النفسيين
+        </Typography>
+
         {details.map((item, index) => (
           <Accordion
-            sx={{ backgroundColor: "bg" }}
+
             key={index}
             expanded={expanded === `panel${index}`}
             onChange={handleChange(`panel${index}`)}
@@ -45,13 +58,14 @@ const AccordionSection = () => {
               expandIcon={<ExpandMoreIcon />}
               aria-controls={`panel${index}bh-content`}
               id={`panel${index}bh-header`}
+
             >
-              <Typography sx={{ color: "main", fontWeight: "600" }}>
+              <Typography color={"text.secondary"} sx={{ fontWeight: "600", }}>
                 {item.title}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography color={"text.secondary"} fontWeight="600">
+            <AccordionDetails sx={{ backgroundColor: "opacity-bg.main" }}>
+              <Typography color={"main.primary"} fontWeight="600">
                 {item.content}
               </Typography>
             </AccordionDetails>

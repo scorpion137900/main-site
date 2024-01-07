@@ -8,6 +8,7 @@ import SpecialistsList from "../components/Main/SpecialistsList";
 import StepsToStart from "../components/Main/Features/StepsToStart";
 import Box from "@mui/material/Box";
 import SpecialistSlider from "../components/Main/SpecialistSlider/SpecialistSlider";
+import SpecialistsContainer from "../components/Specialists/SpecialistsContainer";
 const Main = () => {
   return (
     <>

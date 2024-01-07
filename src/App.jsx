@@ -25,6 +25,9 @@ import PaymentCancel from "./pages/PaymentCancel";
 import Addons from "./pages/Addons";
 import StaffRegister from "./components/Auth/StaffRegister";
 import StaffLogin from "./components/Auth/StaffLogin";
+import SpecialistDetails from "./pages/SpecialistDetails";
+import Videos from "./pages/Videos";
+import Blog from "./pages/Blog";
 // import Meeting from "./pages/Meeting";
 
 function App() {
@@ -53,7 +56,7 @@ function App() {
           path="/specialists/:id"
           element={
             <Layout>
-              <Specialists />
+              <SpecialistDetails />
             </Layout>
           }
         />
@@ -178,6 +181,26 @@ function App() {
         <Route path="/room/:id" element={<RoomPage />} />
         {/* <Route path="/Meeting" element={<Jisti />} /> */}
         <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="videos">
+
+          <Route index element={
+            <Layout>
+
+              <Videos />
+            </Layout>
+
+          } />
+        </Route>
+        <Route path="blogs">
+
+          <Route index element={
+            <Layout>
+
+              <Blog />
+            </Layout>
+
+          } />
+        </Route>
       </Routes>
     </DirectionThemeProvider>
   );

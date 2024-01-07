@@ -7,7 +7,7 @@ import { Container } from "@mui/system";
 import classes from "./textSlider.module.css";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { Box, Button, IconButton, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useDirectionThemeContext } from "../../Context/Direction";
 const tags = [
   " الخوف من الظلام",
@@ -61,13 +61,14 @@ const TextSlider = ({ images, text }) => {
       splide.destroy();
     };
   }, [isRtl]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <Box
       sx={{
-        border: "1px solid #e3f0fb",
-        boxShadow: " 0px 3px 28px rgb(211 226 234 / 15%)",
+        boxShadow: "inset 0px 0 2px rgba(255,255,255,.2)",
         my: "30px",
+        py: "5px",
+        backgroundColor: "light.main"
       }}
     >
       <Container maxWidth="xl">
@@ -77,7 +78,7 @@ const TextSlider = ({ images, text }) => {
           aria-label="Splide Basic HTML Example"
         >
           <div className="splide__track">
-            <ul className="splide__list">
+            <ul className={`splide__list ${classes.splide__list}`} >
               {tags.map((tag, i) => (
                 <li
                   key={i}

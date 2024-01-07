@@ -13,19 +13,19 @@ export const Links = [
 
 export const userMenu = ["Profile", "Logout"];
 export const images = [
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
-  "https://jo24.net/assets/2019-09-11/images/331914_8_1568206507.jpg",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+  "https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png",
+
 ];
 
 // array of objects of blogs of 30 items

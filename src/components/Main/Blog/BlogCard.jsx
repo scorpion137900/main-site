@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import {
   CardActionArea,
+  Chip,
   CircularProgress,
   Grid,
   Pagination,
@@ -75,10 +76,25 @@ const BlogCard = () => {
                   image={Blogs[0].image}
                   alt="green iguana"
                 />
+                <Typography variant="body2" color="text.main" sx={{
+                  position: " absolute",
+                  top: "170px",
+                  right: "5px",
+                  backgroundColor: "primary.main",
+                  color: "#fff",
+                  padding: "5px",
+                  borderRadius: "5px",
+                  fontSize: '12px',
+                }}>
+                  {Blogs[0].date}
+                </Typography>
                 <CardContent>
-                  <Typography variant="body2" color="text.main">
-                    {Blogs[0].date}
-                  </Typography>
+                  <Box sx={{ display: "flex", gap: "5px", flexWrap: "wrap" }} >
+                    <Chip label="Chip Filled" />
+                    <Chip label="Chip Filled" />
+                    <Chip label="Chip Filled" />
+                  </Box>
+
                   <Typography
                     // color={"text.secondary"}
                     variant="h6"

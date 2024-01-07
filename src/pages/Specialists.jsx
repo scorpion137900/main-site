@@ -3,6 +3,7 @@ import { Container } from "@mui/system";
 import React from "react";
 import backgroundImage from "../assets/images/consultants-team.png";
 import TextSlider from "../components/TextSlider/TextSlider";
+import SpecialistsContainer from "../components/Specialists/SpecialistsContainer";
 const Specialists = () => {
   return (
     <>
@@ -38,15 +39,18 @@ const Specialists = () => {
               width: "fit-content",
               p: "30px",
               mx: "auto",
+              borderRadius: '10px',
             }}
           >
             <Typography
               variant="h3"
               component="h3"
               sx={{
-                fontSize: "3rem",
+                fontSize: "2.8rem",
                 fontWeight: "600",
+                py: "10px",
               }}
+              className="text-gradient"
             >
               المختصين
             </Typography>
@@ -58,6 +62,7 @@ const Specialists = () => {
         </Container>
       </Box>
       <TextSlider />
+      <SpecialistsContainer />
     </>
   );
 };
