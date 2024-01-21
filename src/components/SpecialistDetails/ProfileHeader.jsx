@@ -68,8 +68,8 @@ const ProfileHeader = () => {
               </Typography>
             </Box>
           </Box>
-        </Container >
-      </Box >
+        </Container>
+      </Box>
     </>
   )
 }

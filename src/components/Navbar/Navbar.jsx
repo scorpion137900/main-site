@@ -127,7 +127,7 @@ const Navbar = () => {
                 if (link.path === "/times" && user?.role !== "Staff")
                   return null;
                 return (
-                  <NavLink to={link.path} key={link.path}>
+                  <NavLink to={link.path} key={link.path} >
                     <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{link.name}</Typography>
                     </MenuItem>

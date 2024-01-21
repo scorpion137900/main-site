@@ -1,5 +1,5 @@
 import AccordionSection from "../components/Main/AccordionSection";
-import Blog from "../components/Main/Blog/Blog";
+import Blog from "../components/Blog/Blog";
 import Features from "../components/Main/Features/Features";
 import FeaturesList from "../components/Main/Features/FeaturesList";
 import Header from "../components/Main/Header";

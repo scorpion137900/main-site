@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { useEffect } from "react";
 import { Container } from "@mui/material";
+import VideoDialog from "../components/VideoDialog";
+import FileDialog from "../components/Files/FileDialog";
 
 const Layout = ({ children }) => {
   const user = useSelector((state) => state.auth.user);
@@ -39,6 +41,8 @@ const Layout = ({ children }) => {
         {children}
         <Footer />
       </Container>
+      <VideoDialog />
+      <FileDialog />
     </>
   );
 };

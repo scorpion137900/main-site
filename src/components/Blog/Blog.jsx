@@ -4,7 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import BlogCard from "./BlogCard";
 import { ParallaxBanner } from "react-scroll-parallax";
-import blogImg from "../../../assets/images/blog.png";
+import blogImg from "../../assets/images/blog.png";
 const Blog = () => {
   const navigate = useNavigate();
   // const background = {

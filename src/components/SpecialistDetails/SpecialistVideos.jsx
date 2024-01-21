@@ -1,5 +1,5 @@
 import React from 'react'
-import SpecialistsVideo from './SpecialistsVideo'
+import VideoCard from '../VideoCard'
 import { Grid } from '@mui/material'
 
 const SpecialistVideos = () => {
@@ -9,7 +9,7 @@ const SpecialistVideos = () => {
 
         {
           [1, 2, 3, 4, 5, 6, 7].map((item, index) =>
-            <SpecialistsVideo key={index} />
+            <VideoCard key={index} />
           )
         }
       </Grid>

@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogCard from '../Main/Blog/BlogCard'
+import BlogCard from '../Blog/BlogCard'
 import { Grid } from '@mui/material'
 
 const SpecialistArticles = () => {

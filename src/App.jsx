@@ -28,6 +28,10 @@ import StaffLogin from "./components/Auth/StaffLogin";
 import SpecialistDetails from "./pages/SpecialistDetails";
 import Videos from "./pages/Videos";
 import Blog from "./pages/Blog";
+import BlogDetails from "./pages/BlogDetails";
+import VideoDialogProvider from "./Context/VideoDialogContext";
+import Files from "./pages/Files";
+import FileDialogProvider from "./Context/FileDialogContext";
 // import Meeting from "./pages/Meeting";
 
 function App() {
@@ -55,9 +59,11 @@ function App() {
         <Route
           path="/specialists/:id"
           element={
-            <Layout>
-              <SpecialistDetails />
-            </Layout>
+            <VideoDialogProvider>
+              <Layout>
+                <SpecialistDetails />
+              </Layout>
+            </VideoDialogProvider>
           }
         />
         <Route
@@ -184,10 +190,12 @@ function App() {
         <Route path="videos">
 
           <Route index element={
-            <Layout>
+            <VideoDialogProvider>
+              <Layout>
 
-              <Videos />
-            </Layout>
+                <Videos />
+              </Layout>
+            </VideoDialogProvider>
 
           } />
         </Route>
@@ -200,6 +208,27 @@ function App() {
             </Layout>
 
           } />
+          <Route path=":id" element={
+            <Layout>
+
+              <BlogDetails />
+            </Layout>
+
+          } />
+        </Route>
+        <Route path="files">
+
+          <Route index element={
+            <FileDialogProvider>
+
+              <Layout>
+
+                <Files />
+              </Layout>
+            </FileDialogProvider>
+
+          } />
+
         </Route>
       </Routes>
     </DirectionThemeProvider>
