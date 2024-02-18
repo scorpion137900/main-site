@@ -3,7 +3,7 @@ import React from 'react'
 import TimesTimeline from './TimesTimeline'
 import theme from '../../Styles/Styles';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ timeLine }) => {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
@@ -35,8 +35,9 @@ const ProfileHeader = () => {
             flexDirection: "column",
 
           }}>
-
-            <TimesTimeline />
+            {timeLine &&
+              <TimesTimeline />
+            }
           </Box>
           <Box sx={{
             position: matches ? "static" : "absolute",

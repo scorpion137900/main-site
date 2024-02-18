@@ -32,6 +32,7 @@ import BlogDetails from "./pages/BlogDetails";
 import VideoDialogProvider from "./Context/VideoDialogContext";
 import Files from "./pages/Files";
 import FileDialogProvider from "./Context/FileDialogContext";
+import Profile from "./pages/Profile";
 // import Meeting from "./pages/Meeting";
 
 function App() {
@@ -229,6 +230,17 @@ function App() {
 
           } />
 
+        </Route>
+        <Route path="profile">
+          <Route index element={
+
+            <Layout>
+
+              <Profile />
+            </Layout>
+
+
+          } />
         </Route>
       </Routes>
     </DirectionThemeProvider>

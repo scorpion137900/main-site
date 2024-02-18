@@ -2,7 +2,13 @@ import React from "react";
 import { images } from "../../utils/helper";
 import SpecialistCard from "../SpecialistCard";
 import { Box, Grid, Pagination } from "@mui/material";
+import { useGetAllStaffsQuery } from "../../store/features/staff/Staff.js";
+import { useState } from "react";
 const SpecialistsCards = () => {
+  // const staffs = useGetAllStaffsQuery({ page: 1, pageSize 10})
+  const [page, setPage] = useState(1)
+  const { data, isFetching, isError, isSuccess } = useGetAllStaffsQuery(1, 10);
+  console.log(data)
   return (
     <>
       <Box sx={{
@@ -23,7 +29,7 @@ const SpecialistsCards = () => {
           mt: "20px",
           display: "flex",
           justifyContent: "center"
-        }} dir='ltr' count={10} color="primary" />
+        }} dir='ltr' page={page} color="primary" onChange={(e, p) => setPage(p)} />
       </Box>
     </>
   );

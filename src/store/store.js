@@ -4,6 +4,8 @@ import timesReducer from "./features/times/timesSlice";
 import availableTimesReducer from "./features/AvilableTimes/AvailableTimesSlice.js";
 import bouquetReducer from "./features/pricing/PricingSlice";
 import addonsReducer from "./features/addons/AddonsSlice";
+import { staffsApi } from "./features/staff/Staff.js";
+import { setupListeners } from "@reduxjs/toolkit/dist/query/index.js";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -11,5 +13,12 @@ export const store = configureStore({
     availableTimes: availableTimesReducer,
     bouquet: bouquetReducer,
     addons: addonsReducer,
+    [staffsApi.reducerPath]: staffsApi.reducer,
+  },
+  middleware: (getDeafultMiddleware) => {
+    return getDeafultMiddleware().concat(
+      staffsApi.middleware,
+    );
   },
 });
+setupListeners(store.dispatch);

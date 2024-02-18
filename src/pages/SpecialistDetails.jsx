@@ -8,7 +8,7 @@ import { Box, Container } from '@mui/material'
 const SpecialistDetails = () => {
   return (
     <>
-      <ProfileHeader />
+      <ProfileHeader timeLine={true} />
 
       <Box sx={{
         backgroundColor: " #e5e5f780",
