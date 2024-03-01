@@ -35,9 +35,7 @@ const ForgetPasswordReset = () => {
       });
       //   console.log(res);
       notifySucess(`${res?.data?.message}`);
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+
     } catch (error) {
       //   console.log(error);
       const errors = error?.response?.data?.errors;
@@ -57,94 +55,84 @@ const ForgetPasswordReset = () => {
     setLoading(false);
   };
   return (
-    <Container
-      maxWidth="xl"
+
+    <Box
       sx={{
-        minHeight: "55vh",
-        py: "80px",
+        marginTop: "30px",
+
+
+        justifyContent: "center",
+        width: "100%",
+
+        padding: "50px 30px",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        maxWidth: "400px",
+        background: "#fff",
+        boxShadow: "0 0 2px rgba(0,0,0,.4) ",
+        p: "30px ",
       }}
     >
-      <Box
-        sx={{
-          marginTop: "30px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          maxWidth: "500px",
-          width: "100%",
-          margin: "50px auto",
-          padding: "50px 30px",
-          boxShadow: "0px 0px 2px rgba(0,0,0,0.2)",
-        }}
-      >
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ my: "30px", fontWeight: 700, fontSize: "32px" }}
-          color="text.main"
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          variant="outlined"
+          fullWidth
+          sx={{
+            marginBottom: "20px",
+          }}
+          disabled
+          defaultValue={user?.email}
+          value={user?.email}
+        />
+        <TextField
+          label="كلمة السر القديمة"
+          variant="outlined"
+          fullWidth
+          {...register("oldPassword", {
+            required: "this field is required",
+            minLength: {
+              value: 6,
+              message: "password must be at least 6 characters",
+            },
+          })}
+          error={errors.oldPassword}
+          helperText={errors.password?.oldPassword}
+          sx={{
+            marginBottom: "20px",
+          }}
+        />
+        <TextField
+          label="كلمة السر الجديدة"
+          variant="outlined"
+          fullWidth
+          {...register("newPassword", {
+            required: "this field is required",
+            minLength: {
+              value: 6,
+              message: "password must be at least 6 characters",
+            },
+          })}
+          error={errors.newPassword}
+          helperText={errors.password?.newPassword}
+        />
+        <LoadingButton
+          type="submit"
+          loading={loading}
+          loadingPosition="end"
+          endIcon={<VpnKeyOutlined />}
+          variant="contained"
+          sx={{
+            marginTop: "20px",
+            display: "flex",
+            marginRight: "auto",
+          }}
         >
-          Forgot Password Reset
-        </Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            sx={{
-              marginBottom: "20px",
-            }}
-            disabled
-            defaultValue={user?.email}
-            value={user?.email}
-          />
-          <TextField
-            label="كلمة السر القديمة"
-            variant="outlined"
-            fullWidth
-            {...register("oldPassword", {
-              required: "this field is required",
-              minLength: {
-                value: 6,
-                message: "password must be at least 6 characters",
-              },
-            })}
-            error={errors.oldPassword}
-            helperText={errors.password?.oldPassword}
-            sx={{
-              marginBottom: "20px",
-            }}
-          />
-          <TextField
-            label="كلمة السر الجديدة"
-            variant="outlined"
-            fullWidth
-            {...register("newPassword", {
-              required: "this field is required",
-              minLength: {
-                value: 6,
-                message: "password must be at least 6 characters",
-              },
-            })}
-            error={errors.newPassword}
-            helperText={errors.password?.newPassword}
-          />
-          <LoadingButton
-            type="submit"
-            loading={loading}
-            loadingPosition="end"
-            endIcon={<VpnKeyOutlined />}
-            variant="contained"
-            sx={{
-              marginTop: "20px",
-              display: "flex",
-              marginRight: "auto",
-            }}
-          >
-            تغيير كلمة السر
-          </LoadingButton>
-        </form>
-      </Box>
-    </Container>
+          تغيير كلمة السر
+        </LoadingButton>
+      </form>
+    </Box>
   );
 };
 

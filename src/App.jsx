@@ -231,17 +231,18 @@ function App() {
           } />
 
         </Route>
-        <Route path="profile">
-          <Route index element={
+        {user && (
+          <Route path="profile">
+            <Route index element={
 
-            <Layout>
+              <Layout>
 
-              <Profile />
-            </Layout>
+                <Profile />
+              </Layout>
 
 
-          } />
-        </Route>
+            } />
+          </Route>)}
       </Routes>
     </DirectionThemeProvider>
   );

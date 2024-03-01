@@ -180,7 +180,7 @@ const SpecialistsList = () => {
           </Grid>
         </Container>
         <BottomSection />
-      </Box >
+      </Box>
     </>
   );
 };

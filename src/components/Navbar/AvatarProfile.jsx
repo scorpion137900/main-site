@@ -33,7 +33,7 @@ const AvatarProfile = () => {
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar
               alt="User"
-              // src="/static/images/avatar/2.jpg"
+            // src="/static/images/avatar/2.jpg"
             />
           </IconButton>
         </Tooltip>
@@ -53,17 +53,25 @@ const AvatarProfile = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
+          <MenuItem
+            onClick={() => {
+              handleCloseUserMenu();
+              navigate("/profile");
+            }}
+          >
+            <Typography textAlign="center">الملف الشخصي</Typography>
+          </MenuItem>
           <MenuItem onClick={logOut}>
             <Typography textAlign="center">تسجيل الخروج</Typography>
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             onClick={() => {
               handleCloseUserMenu();
               navigate("/reset-password");
             }}
           >
             <Typography textAlign="center">اعادة تعيين كلمة المرور</Typography>
-          </MenuItem>
+          </MenuItem> */}
           {/* {userMenu.map((setting) => (
             <MenuItem key={setting} onClick={handleCloseUserMenu}>
               <Typography textAlign="center">{setting}</Typography>

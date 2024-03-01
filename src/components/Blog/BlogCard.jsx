@@ -9,58 +9,43 @@ import {
   Grid,
   Pagination,
 } from "@mui/material";
-import { Blogs } from "../../utils/helper";
+import { Blogs, convertToArabicFormat } from "../../utils/helper";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AvatarCard from "../AvatarCard";
-const array = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-  23, 24, 25, 26, 27, 28, 29, 30,
-];
-const BlogCard = ({ maxSize }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
-  const [loading, setLoading] = useState(false);
-  const totalPages = Math.ceil(array.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPosts = array.slice(startIndex, endIndex);
-  const handlePageChange = (event, pageNumber) => {
-    setLoading(true);
-    setCurrentPage(pageNumber);
-  };
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout(interval);
-  }, [currentPage]);
+import { SERVER_URL } from "../../utils/constants";
+import { BookmarkAdd, BookmarkAdded } from "@mui/icons-material";
+import Loader from "../Loader";
+
+
+const BlogCard = ({ maxSize, posts, isFetching }) => {
+  console.log(posts)
+  const navigate = useNavigate()
   return (
     <>
-      {loading ? (
-        <Box
-          sx={{
-            display: "flex",
-            minHeight: "500px",
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <CircularProgress
-            sx={{
-              width: "60px !important",
-              height: "60px !important",
-            }}
-          />
-        </Box>
+      {isFetching ? (
+        <Loader />
       ) : (
         <Grid container spacing={"20px"}>
-          {currentPosts.map((item, index) => (
-            <Grid item sm={6} xs={12} md={maxSize ? 6 : 4} lg={maxSize ? 4 : 3} key={index}>
+          {posts?.map((post) => {
+            const arabicDate = convertToArabicFormat(post?.articleCreationDate)
+            return (
 
-              <Link to={"/blogs/1"}>
+              <Grid item sm={6} xs={12} md={maxSize ? 6 : 4} lg={maxSize ? 4 : 3} key={post?.id}
+                onClick={() => {
+                  navigate("/blogs/" + post?.id,
+                    {
+                      state: {
+                        post: post
+                      }
+                    }
+                  )
+                }}
+              >
+
+                {/* <Link to={"/blogs/" + post?.id} state={{ post: post }}> */}
+                {/* <Link to={{ pathname: "/blogs/" + post?.id, state: post }}> */}
                 <Card
                   sx={{
                     width: "100%",
@@ -69,20 +54,24 @@ const BlogCard = ({ maxSize }) => {
                       transform: "scale(1.05)",
                       transition: "transform .5s ease-in-out",
                     },
+
+
                   }}
                 >
                   <CardActionArea>
                     <Box sx={{
                       position: "relative",
                     }}>
-                      <AvatarCard w={"50px"} h={"50px"} fz={"13px"} fz2={"11px"} fz3={"9px"} hide />
+
+
+
+                      <AvatarCard w={"50px"} h={"50px"} fz={"13px"} fz2={"11px"} fz3={"9px"} hide name={post?.staffName} staffId={post?.staffId} likes={post?.likes} />
                       <CardMedia
                         component="img"
                         height="200"
-                        image={Blogs[0].image}
+                        image={SERVER_URL + post?.articleImage}
                         alt="green iguana"
                       />
-
                       <Typography variant="body2" color="text.main" sx={{
                         position: " absolute",
                         top: "5px",
@@ -93,14 +82,25 @@ const BlogCard = ({ maxSize }) => {
                         borderRadius: "5px",
                         fontSize: '12px',
                       }}>
-                        {Blogs[0].date}
+                        {arabicDate}
+                      </Typography>
+                      <Typography variant="body2" color="text.main" sx={{
+                        position: " absolute",
+                        top: "5px",
+                        left: "5px",
+                        backgroundColor: "primary.main",
+                        color: "#fff",
+                        padding: "5px",
+                        borderRadius: "5px",
+                        fontSize: '12px',
+                      }}>
+                        {post?.isBookmarked ? <BookmarkAdded /> : <BookmarkAdd />}
                       </Typography>
                     </Box>
                     <CardContent sx={{ pt: "40px" }}>
                       <Box sx={{ display: "flex", gap: "5px", flexWrap: "wrap" }} >
-                        <Chip label="Chip Filled" />
-                        <Chip label="Chip Filled" />
-                        <Chip label="Chip Filled" />
+                        <Chip label={post?.specialitiesName} />
+
                       </Box>
 
                       <Typography
@@ -111,17 +111,18 @@ const BlogCard = ({ maxSize }) => {
                         my="20px"
                         fontSize=".9rem"
                       >
-                        {Blogs[0].title}
+                        {post?.title}
                       </Typography>
                       <Typography variant="body1" component="p" fontSize=".9rem">
-                        {Blogs[0].text.slice(0, 100)}
+                        {post?.content.slice(0, 100)}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
                 </Card>
-              </Link>
-            </Grid>
-          ))}
+                {/* </Link> */}
+              </Grid>
+            )
+          })}
         </Grid>
       )}
 
@@ -132,14 +133,7 @@ const BlogCard = ({ maxSize }) => {
         display={"flex"}
         justifyContent={"center"}
       >
-        <Pagination
-          count={totalPages}
-          page={currentPage}
-          onChange={handlePageChange}
-          shape="rounded"
-          dir="ltr"
-          color="primary"
-        />
+
       </Box>
     </>
   );

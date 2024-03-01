@@ -80,3 +80,11 @@ export const notifyInfo = (message) => {
     theme: "light",
   });
 };
+
+export const convertToArabicFormat = (date) => {
+  const serializedDate = new Date(date);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false };
+
+  const arabicDate = new Intl.DateTimeFormat('ar-EG', options).format(serializedDate);
+  return arabicDate
+}

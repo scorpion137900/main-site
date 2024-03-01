@@ -2,30 +2,29 @@
    hooks corresponding to the defined endpoints */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_URL } from "../../../utils/constants";
-const staffsApi = createApi({
-  reducerPath: "StaffUser",
+const endpointsApi = createApi({
+  reducerPath: "endpoints",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${API_URL}/StaffUser`,
+    baseUrl: `${API_URL}`,
   }),
   endpoints(builder) {
     return {
-      getAllStaffs: builder.query({
-        providesTags: ["specialities"],
-        query: (page, pageSize) => {
+      getStaffSpecialities: builder.query({
+        query: (staffId, page, pageSize) => {
           return {
-            url: `/GetAllStaffs?page=${page}&pageSize=5`,
+            url: `/StaffSpecialities/GetStaffSpecialities?StaffId=${staffId}&page=${page}&pageSize=${pageSize}`,
             method: "GET",
           };
         },
       }),
-      getStaffDetails: builder.query({
-        invalidatesTags: ["specialities"],
-        query: (id) => {
-          return {
-            url: `/GetStaff?staffId=${id}`,
-          }
-        }
-      }),
+      // getStaffDetails: builder.query({
+      //   invalidatesTags: ["specialities"],
+      //   query: (id) => {
+      //     return {
+      //       url: `/GetStaff?staffId=${id}`,
+      //     }
+      //   }
+      // }),
       // getStaff
       //     addSpecialitise: builder.mutation({
       //       invalidatesTags: ["specialities"],
@@ -68,9 +67,8 @@ const staffsApi = createApi({
     };
   },
 });
-export { staffsApi };
+export { endpointsApi };
 export const {
-  useGetAllStaffsQuery,
-  useGetStaffDetailsQuery,
 
-} = staffsApi;
+  useGetStaffSpecialitiesQuery
+} = endpointsApi;

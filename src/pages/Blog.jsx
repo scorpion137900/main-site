@@ -12,7 +12,7 @@ const Blog = () => {
         text={"Daily articles with the most important topics in health and mental well-being, to be the best version of yourself"}
       />
 
-      < MainBlogsContainer />
+      <MainBlogsContainer />
     </>
   )
 }

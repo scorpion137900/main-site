@@ -1,10 +1,11 @@
-import { Box, Container, Typography, useMediaQuery } from '@mui/material'
+import { Box, Container, Skeleton, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 import TimesTimeline from './TimesTimeline'
 import theme from '../../Styles/Styles';
 
-const ProfileHeader = ({ timeLine }) => {
+const ProfileHeader = ({ timeLine, user }) => {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <>
       <Box sx={{
@@ -62,11 +63,13 @@ const ProfileHeader = ({ timeLine }) => {
             <Box sx={{
               opacity: .6
             }}>
-              <Typography className='text-gradient' variant='h4' py="10px" fontWeight={"900"} >د. إياد العزة
-              </Typography>
-              <Typography variant='p' fontWeight={"700"} color={"text.main"}>طبيب وأخصائي نفسي
+              {user?.name ?
 
-              </Typography>
+                <Typography className='text-gradient' variant='h4' py="10px" fontWeight={"900"} >{user?.name} </Typography>
+                : <Skeleton />
+              }
+              {/* <Typography variant='p' fontWeight={"700"} color={"text.main"}>طبيب وأخصائي نفسي</Typography> */}
+              {user?.email && <Typography variant='p' fontWeight={"700"} color={"text.main"}>{user?.email}</Typography>}
             </Box>
           </Box>
         </Container>

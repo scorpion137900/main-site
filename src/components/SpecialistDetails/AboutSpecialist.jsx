@@ -2,9 +2,12 @@
 import { Box, List, Typography } from '@mui/material';
 import React from 'react'
 import SpecialistListItem from './SpecialistListItem';
+import { useParams } from 'react-router-dom';
 const specialists = ["اضطراب الوسواس القهري (أوسد)", "اضطراب القلق المعمم (GAD)", "اضطراب الهلع ونوبات الهلع", "العلاج السلوكي المعرفي (CBT) ", "الاكتئاب "]
 const certificates = ["ماجستير الطب النفسى", " دكتوراه في الطب النفسي كلية طب من جامعة الزقازيق", "عضوية الجمعيه المصريه للطب النفسى"]
 const AboutSpecialist = () => {
+  const { id } = useParams()
+  console.log(id)
 
   return (
     <List>

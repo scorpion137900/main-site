@@ -1,8 +1,10 @@
 import { ThumbUp } from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const AvatarCard = ({ w, h, fz, fz2, fz3, hide }) => {
+const AvatarCard = ({ w, h, fz, fz2, fz3, hide, name, staffId, likes }) => {
+  const navigate = useNavigate()
   return (
     <>
       <Box
@@ -26,8 +28,16 @@ const AvatarCard = ({ w, h, fz, fz2, fz3, hide }) => {
           left: "20px",
           flexDirection: "row",
           my: "0px",
+          zIndex: 99,
+          cursor: "pointer"
 
-        }}>
+        }}
+          onClick={(e) => {
+            e.stopPropagation()
+            e.preventDefault()
+            navigate("/specialists/" + staffId)
+          }}
+        >
           <Box as={"img"} alt="profile" src="https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png"
             sx={{
 
@@ -57,8 +67,11 @@ const AvatarCard = ({ w, h, fz, fz2, fz3, hide }) => {
               borderWidth: "10px",
               borderStyle: "solid",
               borderRightColor: "main"
-            }} />
-            <Typography className='text-gradient' fontSize={fz} variant='h6' py="5px" fontWeight={"700"} padding={0} >د. إياد العزة
+            }}
+
+
+            />
+            <Typography className='text-gradient' fontSize={fz} variant='h6' py="5px" fontWeight={"700"} padding={0} >{name}
             </Typography>
             {!hide &&
               <>
@@ -84,7 +97,7 @@ const AvatarCard = ({ w, h, fz, fz2, fz3, hide }) => {
           fontWeight: "700",
           color: "light.main",
         }}>
-          2000
+          {likes}
           <ThumbUp />
         </Box>
       </Box>

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Comment from '../Comment';
 import SessionReports from './SessionReports';
-import ChangePassword from './ChangePassword';
+import ForgetPasswordReset from '../Auth/ResetPassword';
 
 
 function CustomTabPanel(props) {
@@ -79,7 +79,7 @@ export default function UserProfileTabs() {
         5
       </CustomTabPanel>
       <CustomTabPanel value={value} index={5}>
-        <ChangePassword />
+        <ForgetPasswordReset />
       </CustomTabPanel>
     </Box>
   );

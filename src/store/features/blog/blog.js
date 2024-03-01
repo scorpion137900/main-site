@@ -2,31 +2,32 @@
    hooks corresponding to the defined endpoints */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_URL } from "../../../utils/constants";
-const staffsApi = createApi({
-  reducerPath: "StaffUser",
+const blogsApi = createApi({
+  reducerPath: "Article",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${API_URL}/StaffUser`,
+    baseUrl: `${API_URL}/Article`,
   }),
   endpoints(builder) {
     return {
-      getAllStaffs: builder.query({
-        providesTags: ["specialities"],
+      getAllArticles: builder.query({
+        providesTags: ["articles"],
         query: (page, pageSize) => {
           return {
-            url: `/GetAllStaffs?page=${page}&pageSize=5`,
+            url: `/GetAllArticle?page=${page}&pageSize=5`,
             method: "GET",
           };
         },
       }),
-      getStaffDetails: builder.query({
-        invalidatesTags: ["specialities"],
+      getArticleContent: builder.query({
+        invalidatesTags: ["articles"],
         query: (id) => {
           return {
-            url: `/GetStaff?staffId=${id}`,
+            url: `/GetArticleContent?ArticleId=${id}`,
+            method: "GET",
+
           }
         }
-      }),
-      // getStaff
+      })
       //     addSpecialitise: builder.mutation({
       //       invalidatesTags: ["specialities"],
       //       query(data) {
@@ -68,9 +69,8 @@ const staffsApi = createApi({
     };
   },
 });
-export { staffsApi };
+export { blogsApi };
 export const {
-  useGetAllStaffsQuery,
-  useGetStaffDetailsQuery,
-
-} = staffsApi;
+  useGetAllArticlesQuery,
+  useGetArticleContentQuery
+} = blogsApi;

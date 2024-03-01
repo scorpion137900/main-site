@@ -2,7 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import classes from "./Main/SplideCarousel/Splide.module.css";
 import { Box } from '@mui/material';
-const SpecialistCard = ({ i, image }) => {
+import { convertToArabicFormat } from '../utils/helper';
+const SpecialistCard = ({ i, image, firstName, lastName, date }) => {
+  const arabicDate = convertToArabicFormat(date)
+
   return (
     <Link to={`/specialists/${i}`} className={`splide__slide ${classes.splide__slide}`}>
       <Box sx={{
@@ -30,6 +33,30 @@ const SpecialistCard = ({ i, image }) => {
         <span> 4.8</span>
         <span>⭐</span>
       </Box>
+      <Box sx={{
+        position: "absolute",
+        top: "15px",
+        left: "15px",
+        backgroundColor: "light.main",
+        borderRadius: "5px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        lineHeight: 1.3,
+        zIndex: 1,
+        padding: "10px",
+        gap: "0px",
+        fontSize: "10x",
+        "& span": {
+          fontSize: "9px",
+          margin: 0,
+          fontWeight: "bold",
+        }
+      }}>
+        <span>أخر نشاط</span>
+        <span>{arabicDate}</span>
+      </Box>
       <Box
 
         as={"li"} sx={{
@@ -43,8 +70,11 @@ const SpecialistCard = ({ i, image }) => {
 
 
         }} >
-        <img src={image} />
-        <h3>د / ماجد  الدسوقي </h3>
+        <Box as="img" alt="" src={image} sx={{
+          objectFit: "cover",
+          maxHeight: "200px",
+        }} />
+        <h3>{firstName + " " + lastName} </h3>
         <h4>SPECIALITY </h4>
         <p>مدير الموقع</p>
         <Box sx={{

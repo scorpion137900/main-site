@@ -9,12 +9,14 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import SpecialistCard from "../../SpecialistCard";
+import { useGetAllStaffsQuery } from "../../../store/features/staff/Staff";
 
 
 
 const SplideCarousel = ({ images, text, title }) => {
   const splideRef = useRef(null);
   const { isRtl } = useDirectionThemeContext();
+  const { data, isFetching, isError, isSuccess } = useGetAllStaffsQuery(1, 10);
 
   useEffect(() => {
     const splide = new Splide(splideRef.current, {
@@ -83,9 +85,9 @@ const SplideCarousel = ({ images, text, title }) => {
       >
         <div className="splide__track">
           <ul className="splide__list"     >
-            {images.map((image, i) => (
+            {data?.result?.staff?.map((el,) => (
 
-              <SpecialistCard key={i} i={i} image={image} />
+              <SpecialistCard key={el?.id} i={el?.id} date={el?.closestTime} firstName={el?.firstName} lastName={el?.lastName} image={"https://www.alleganyco.gov/wp-content/uploads/unknown-person-icon-Image-from.png"} />
             ))}
           </ul>
         </div>
