@@ -1,11 +1,12 @@
-import { PlayCircleFilled, ThumbUp } from '@mui/icons-material'
+import { PlayCircleFilled } from '@mui/icons-material'
 import { Box, Chip, Grid, IconButton, Stack, Typography } from '@mui/material'
 import React from 'react'
 import AvatarCard from './AvatarCard'
 import { useVideoDialogContext } from '../Context/VideoDialogContext'
-
-const VideoCard = ({ maxSize }) => {
+import { SERVER_URL } from "../utils/constants";
+const VideoCard = ({ maxSize, video }) => {
   const { setVideo, setOpen } = useVideoDialogContext()
+  console.log(video)
   return (
     <>
 
@@ -26,7 +27,10 @@ const VideoCard = ({ maxSize }) => {
               scale: "1"
             }
           }}
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setOpen(true)
+              setVideo(video?.link)
+            }}
           >
             <AvatarCard w={"50px"} h={"50px"} fz={"13px"} fz2={"11px"} fz3={"9px"} hide />
             <Box className='overlay' sx={{
@@ -57,7 +61,7 @@ const VideoCard = ({ maxSize }) => {
               borderRadius: "5px",
               objectFit: "cover"
             }}
-              src="https://marketplace.canva.com/EAFf5rfnPgA/1/0/1600w/canva-blue-modern-eye-catching-vlog-youtube-thumbnail-LEcp-BYepDU.jpg"
+              src={`${SERVER_URL}${video?.thumbnail}`}
               alt="thumbnail"
             />
           </Box>
@@ -76,16 +80,10 @@ const VideoCard = ({ maxSize }) => {
 
             </Typography>
             <Typography variant='h6' color={"primary"}>
-              عنوان الفيديو
+              {video?.title}
             </Typography>
             <Typography variant='body' color={"text.primary"} fontSize={"13px"}>
-              lorem ipsum dolor sit
-              amet
-              consectetur
-              adipisicing elit.
-              Repudiandae, voluptatum
-              lorem ipsum
-
+              {video?.description}
             </Typography>
           </Box>
         </Box>

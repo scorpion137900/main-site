@@ -4,12 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import HeaderPhoto from "../../assets/images/HeaderPhoto.svg";
-import header from "../../assets/images/header.png";
+
 import theme from "../../Styles/Styles";
 import { notifyInfo } from "../../utils/helper";
 import BottomSection from "../BottomSection";
-import { ParallaxBanner } from "react-scroll-parallax";
-const Header = () => {
+const Header = ({ headerTitle, firstParagraph, secondParagraph, showButton }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { t } = useTranslation();
@@ -79,7 +78,7 @@ const Header = () => {
               p: "15px"
             }}
           >
-            {t("headerTitle")}
+            {headerTitle}
           </Typography>
           <Typography
             component={"p"}
@@ -91,7 +90,8 @@ const Header = () => {
               my: "30px",
             }}
           >
-            جلسات نفسية وأسرية ، بكل سهولة وخصوصية
+
+            {firstParagraph}
           </Typography>
           <Typography
             component={"p"}
@@ -103,13 +103,13 @@ const Header = () => {
               mb: "30px",
             }}
           >
-            نسهِّل وصولك لأفضل المختصين في العلاج والإرشاد النفسي والأسري والتربوي
-
-
+            {secondParagraph}
           </Typography>
-          <Button variant="contained" onClick={handleTimeNavigate}>
-            البدء بالتشخيص
-          </Button>
+          {
+            showButton && <Button variant="contained" onClick={handleTimeNavigate}>
+              البدء بالتشخيص
+            </Button>
+          }
         </Box>
         <BottomSection />
 

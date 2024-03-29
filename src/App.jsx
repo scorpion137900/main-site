@@ -33,6 +33,7 @@ import VideoDialogProvider from "./Context/VideoDialogContext";
 import Files from "./pages/Files";
 import FileDialogProvider from "./Context/FileDialogContext";
 import Profile from "./pages/Profile";
+import Complaint from "./pages/Complaint";
 // import Meeting from "./pages/Meeting";
 
 function App() {
@@ -110,6 +111,16 @@ function App() {
             }
           />
         )}
+        {user && (
+          <Route
+            path="/complaint"
+            element={
+              <Layout>
+                <Complaint />
+              </Layout>
+            }
+          />
+        )}
         {user?.role === "Staff" && (
           <Route
             path="/times"
@@ -120,14 +131,14 @@ function App() {
             }
           />
         )}
-        <Route
+        {/* <Route
           path="/reset-password"
           element={
             <Layout>
               <ResetPassword />
             </Layout>
           }
-        />
+        /> */}
         <Route
           path="/register"
           element={

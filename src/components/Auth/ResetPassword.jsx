@@ -98,7 +98,7 @@ const ForgetPasswordReset = () => {
             },
           })}
           error={errors.oldPassword}
-          helperText={errors.password?.oldPassword}
+          helperText={errors.oldPassword?.message}
           sx={{
             marginBottom: "20px",
           }}
@@ -115,7 +115,7 @@ const ForgetPasswordReset = () => {
             },
           })}
           error={errors.newPassword}
-          helperText={errors.password?.newPassword}
+          helperText={errors.newPassword?.message}
         />
         <LoadingButton
           type="submit"

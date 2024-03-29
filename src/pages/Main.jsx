@@ -8,12 +8,13 @@ import SpecialistsList from "../components/Main/SpecialistsList";
 import StepsToStart from "../components/Main/Features/StepsToStart";
 import Box from "@mui/material/Box";
 import SpecialistSlider from "../components/Main/SpecialistSlider/SpecialistSlider";
-import SpecialistsContainer from "../components/Specialists/SpecialistsContainer";
+import { useTranslation } from "react-i18next";
 const Main = () => {
+  const { t } = useTranslation();
   return (
     <>
 
-      <Header />
+      <Header headerTitle={t("headerTitle")} firstParagraph="جلسات نفسية وأسرية ، بكل سهولة وخصوصية" secondParagraph=" نسهِّل وصولك لأفضل المختصين في العلاج والإرشاد النفسي والأسري والتربوي" showButton={true} />
       <StepsToStart />
       {/* <Features /> */}
       <Box sx={{

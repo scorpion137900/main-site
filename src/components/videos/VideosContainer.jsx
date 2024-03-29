@@ -1,9 +1,17 @@
 import { Container, Grid, Pagination } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import VideosFilter from './VideosFilter'
 import VideosGrid from './VideosGrid'
+import { useGetAllVideosQuery } from '../../store/features/videos/video'
+import Loader from '../Loader'
 
 const VideosContainer = () => {
+  const [page, setPage] = useState(1)
+  const pageSize = 10;
+  const { data, isFetching, isError, isSuccess } = useGetAllVideosQuery(page, pageSize);
+
+
+  console.log(data)
   return (
     <>
       <Container maxWidth="xl">
@@ -12,7 +20,11 @@ const VideosContainer = () => {
             <VideosFilter />
           </Grid>
           <Grid container item xs={12} md={9} spacing={"20px"}>
-            <VideosGrid />
+            {isFetching ?
+              <Loader /> :
+
+              <VideosGrid videos={data?.result?.videos} />
+            }
 
           </Grid>
         </Grid>
@@ -21,7 +33,7 @@ const VideosContainer = () => {
         mt: "20px",
         display: "flex",
         justifyContent: "center"
-      }} dir='ltr' count={10} color="primary" />
+      }} dir='ltr' count={data?.result?.videosTotalCount / pageSize} page={page} color="primary" onChange={(e, p) => setPage(p)} />
     </>
   )
 }

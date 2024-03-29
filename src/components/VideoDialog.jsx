@@ -14,13 +14,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function VideoDialog() {
-  const { open, setOpen } = useVideoDialogContext()
+  const { open, setOpen, video, setVideo } = useVideoDialogContext()
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+    setVideo(null)
   };
 
   return (
@@ -49,7 +50,7 @@ export default function VideoDialog() {
         </AppBar>
 
         <DialogContent>
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-gajRd8Bib4?si=IDrlguaS0zn4-TKk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${video}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </DialogContent>
 
       </Dialog>
