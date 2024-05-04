@@ -1,6 +1,7 @@
 //Auth token we will use to generate a meeting and connect to it
 export const authToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJjYjFlMzJjNi0zNWU4LTRmNzAtOTY2Zi1kNWUxOWYwMzRiODAiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY3OTcxOTIzNCwiZXhwIjoxNjgyMzExMjM0fQ.U1Xs-TSeMIpguHZYgGnv2L1OPZCna4Y1YGykGoP-tLA";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJkMTllNjNhMS1lNDZhLTQyMjktYjk1ZS02MzNiY2I4NGJlMjkiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcxNDgzNjg3NCwiZXhwIjoxNzE0OTIzMjc0fQ.7VVf_F2AxpnJygdx5l3HoS2k9pftZPqa708nBygX5ts"
+// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJjYjFlMzJjNi0zNWU4LTRmNzAtOTY2Zi1kNWUxOWYwMzRiODAiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY3OTcxOTIzNCwiZXhwIjoxNjgyMzExMjM0fQ.U1Xs-TSeMIpguHZYgGnv2L1OPZCna4Y1YGykGoP-tLA";
 // API call to create meeting
 export const createMeeting = async ({ token }) => {
   try {

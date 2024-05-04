@@ -18,12 +18,12 @@ const ScrollTop = () => {
         behavior: "smooth",
       });
     };
-    ButtonRef.current.addEventListener("click", scrollTopFunction);
+    ButtonRef?.current?.addEventListener("click", scrollTopFunction);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      ButtonRef.current.removeEventListener("click", scrollTopFunction);
+      ButtonRef?.current?.removeEventListener("click", scrollTopFunction);
     };
   }, []);
 
